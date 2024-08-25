@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+const url = "https://blog-app-api-zu.onrender.com";
 
 function PostList() {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5001/api/posts',{
+        fetch(`${url}/api/posts`,{
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         })

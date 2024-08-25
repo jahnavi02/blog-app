@@ -1,6 +1,6 @@
-// src/pages/PostDetail.js
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+const url = "https://blog-app-api-zu.onrender.com";
 
 function PostDetail() {
     const { id } = useParams();
@@ -13,7 +13,7 @@ function PostDetail() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5001/api/posts/${id}`)
+        fetch(`${url}/api/posts/${id}`)
             .then(response => response.json())
             .then(data => {
                 setPost(data);
@@ -25,7 +25,7 @@ function PostDetail() {
     }, [id]);
 
     const handleDelete = () => {
-        fetch(`http://localhost:5001/api/posts/${id}`, {
+        fetch(`${url}/api/posts/${id}`, {
             method: 'DELETE',
         })
             .then(response => {
@@ -54,7 +54,7 @@ function PostDetail() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`http://localhost:5001/api/posts/${id}`, {
+        fetch(`${url}/api/posts/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ title, content, image }),

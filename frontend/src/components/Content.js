@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+const url = "https://blog-app-api-zu.onrender.com";
 
 function ContentsList() {
     const [titles, setTitles] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5001/api/posts/titles')
+        fetch(`${url}/api/posts/titles`)
             .then(response => response.json())
             .then(data => setTitles(data))
             .catch(error => console.error('Error fetching titles:', error));

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+const url = "https://blog-app-api-zu.onrender.com";
 
 function PostForm() {
     const [title, setTitle] = useState('');
@@ -23,7 +24,7 @@ function PostForm() {
             formData.append('image', image);
         }
 
-        fetch('http://localhost:5001/api/posts/new', {
+        fetch(`${url}/api/posts/new`, {
             method: 'POST',
             body: formData, // Use formData for file uploads
         })
